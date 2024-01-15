@@ -1,5 +1,8 @@
 package code;
 
+import code.services.BoardService;
+import code.services.MoveServiceImpl;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -34,7 +37,6 @@ public class ChessGameHandler implements Runnable {
             char[][] board = BoardService.getInitializeBoard();
             printBoards(board);
 
-            System.out.println("The game has started!");
             while (continueGame) {
                 move = getPlayerMove();
                 executeMove(board, move, king);
@@ -45,7 +47,6 @@ public class ChessGameHandler implements Runnable {
                 printBoards(board);
                 king = changeTheOrderOfMovement(king);
             }
-            System.out.println("Game over!");
         } catch (IOException | ClassNotFoundException e) {
             System.err.println(e.getMessage());
         } finally {
@@ -114,7 +115,6 @@ public class ChessGameHandler implements Runnable {
     }
 
     private void printBoards(char[][] board) throws IOException {
-        BoardService.print(board);
         pingPlayer(currentPlayerOutputStream, "board");
         pingPlayer(nextPlayerOutputStream, "board");
         sendUpdatedBoard(BoardService.convertBoardToString(board));
