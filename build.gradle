@@ -4,6 +4,7 @@ plugins {
 
 group 'org.example'
 version '1.0-SNAPSHOT'
+sourceCompatibility = 17
 
 repositories {
     mavenCentral()
@@ -16,4 +17,11 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    archivesBaseName = 'chess'
+    manifest {
+        attributes 'Main-Class': 'code.ChessServer'
+    }
 }

@@ -1,17 +1,6 @@
-package code;
+package code.services;
 
 public class BoardService {
-
-    public static void print(char[][] board) {
-        for (char[] row : board) {
-            System.out.print("|");
-            for (char c : row) {
-                System.out.print(c + "|");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
 
     public static String convertBoardToString(char[][] board) {
         StringBuilder boardString = new StringBuilder("   a b c d e f g h \n");
